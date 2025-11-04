@@ -1,31 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Countdown Timer
-    const countdownBanner = document.getElementById('countdown-banner');
-    if (countdownBanner) {
-        const countdownDate = new Date("2025-11-30T23:59:59").getTime();
-
-        const updateCountdown = () => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-
-            if (distance < 0) {
-                countdownBanner.innerHTML = "El pedido ha cerrado.";
-                clearInterval(countdownInterval);
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            countdownBanner.innerHTML = `El pedido cierra en ${days}d ${hours}h ${minutes}m ${seconds}s`;
-        };
-
-        const countdownInterval = setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call
-    }
-
     // Menú Móvil
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -157,12 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col h-full hover-effect">
                     <div class="relative">
                         <img src="${product.image || 'https://via.placeholder.com/300x200.png?text=Producto'}" alt="${product.name}" class="w-full h-48 ${imageClass}">
-                        <div class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-full">${product.classification}</div>
+                        <div class="absolute top-2 right-2 bg-[var(--color-accent)] text-white text-xs font-bold px-2 py-1 rounded-full">${product.classification}</div>
                     </div>
                     <div class="p-4 flex flex-col flex-grow">
                         <h3 class="text-lg font-semibold text-gray-800 mb-2 truncate" title="${product.name}">${product.name}</h3>
                         <p class="text-sm text-gray-600 mb-3 flex-grow">${product.description.length > 60 ? product.description.substring(0, 60) + '...' : product.description}</p>
-                        <p class="text-xl font-bold text-yellow-600 mb-4">${formatCurrency(product.price)}</p>
+                        <p class="text-xl font-bold text-[var(--color-accent)] mb-4">${formatCurrency(product.price)}</p>
                         <div class="mt-auto">
                             <div class="flex items-center justify-center space-x-3 mb-4">
                                 <button onclick="updateQuantity('${product.id}', -1)" aria-label="Disminuir cantidad" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300">-</button>
@@ -170,10 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <button onclick="updateQuantity('${product.id}', 1)" aria-label="Aumentar cantidad" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300">+</button>
                             </div>
                             <button onclick="window.addToCart({id:'${product.id}', name:'${product.name.replace(/'/g, "\\'")}', price:${product.price}, image:'${product.image}', description:'${product.description.replace(/'/g, "\\'")}'}, getQuantity('${product.id}'))"
-                                    class="w-full bg-yellow-500 text-white py-2 px-4 rounded-md font-semibold hover:bg-yellow-600 transition-colors duration-300 text-sm">
+                                    class="w-full bg-[var(--color-accent)] text-white py-2 px-4 rounded-md font-semibold hover:bg-[var(--color-primary-dark)] transition-colors duration-300 text-sm">
                                 Agregar al Carrito
                             </button>
-                            <button onclick="window.openProductModal({id:'${product.id}', name:'${product.name.replace(/'/g, "\\'")}', price:${product.price}, image:'${product.image}', description:'${product.description.replace(/'/g, "\\'")}', classification:'${product.classification}'})"
+                            <button onclick="window.openPopularProductModal({id:'${product.id}', name:'${product.name.replace(/'/g, "\\'")}', price:${product.price}, image:'${product.image}', description:'${product.description.replace(/'/g, "\\'")}', classification:'${product.classification}'})"
                                     class="w-full mt-2 bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300 transition-colors duration-300 text-sm">
                                 Ver Más
                             </button>
@@ -183,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
     }
-    
+
     // (Resto de funciones del carrusel: setupCarousel, moveTo... si las necesitas)
     // ...
 
@@ -216,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderProductCard(product) {
         const truncatedDescription = product.description.length > 80 ? product.description.substring(0, 80) + '...' : product.description;
         const imageClass = product.imageFit === 'contain' ? 'long-product-image' : 'object-cover';
-        
+
         // Escapar comillas simples para que no rompan el string de JS en onclick
         const safeName = product.name.replace(/'/g, "\\'");
         const safeDesc = product.description.replace(/'/g, "\\'");
@@ -225,12 +198,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="product-card bg-white rounded-lg shadow-lg overflow-hidden flex flex-col hover-effect reveal-fade-in" data-category="${product.category}">
                 <div class="relative">
                     <img src="${product.image || 'https://via.placeholder.com/300x200.png?text=Producto'}" alt="${product.name}" class="w-full h-56 ${imageClass}">
-                    <div class="absolute top-2 right-2 bg-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-full">${product.classification}</div>
+                    <div class="absolute top-2 right-2 bg-[var(--color-accent)] text-white text-xs font-bold px-2 py-1 rounded-full">${product.classification}</div>
                 </div>
                 <div class="p-5 flex flex-col flex-grow">
                     <h3 class="text-xl font-semibold text-gray-800 mb-2 truncate" title="${product.name}">${product.name}</h3>
                     <p class="text-sm text-gray-500 mb-3 flex-grow">${truncatedDescription}</p>
-                    <p class="text-2xl font-bold text-yellow-600 mb-5">${formatCurrency(product.price)}</p>
+                    <p class="text-2xl font-bold text-[var(--color-accent)] mb-5">${formatCurrency(product.price)}</p>
                     <div class="mt-auto space-y-2">
                         <div class="flex items-center justify-center space-x-3 mb-2">
                             <button onclick="updateQuantity('${product.id}', -1)" aria-label="Disminuir cantidad" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300">-</button>
@@ -238,10 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             <button onclick="updateQuantity('${product.id}', 1)" aria-label="Aumentar cantidad" class="bg-gray-200 text-gray-700 px-3 py-1 rounded-md hover:bg-gray-300">+</button>
                         </div>
                         <button onclick="window.addToCart({id:'${product.id}', name:'${safeName}', price:${product.price}, image:'${product.image}', description:'${safeDesc}'}, getQuantity('${product.id}'))"
-                                class="w-full bg-yellow-500 text-white py-2.5 px-4 rounded-md font-semibold hover:bg-yellow-600 transition-colors duration-300 text-base">
+                                class="w-full bg-[var(--color-accent)] text-white py-2.5 px-4 rounded-md font-semibold hover:bg-[var(--color-primary-dark)] transition-colors duration-300 text-base">
                             Agregar al Carrito
                         </button>
-                        <button onclick="window.openProductModal({id:'${product.id}', name:'${safeName}', price:${product.price}, image:'${product.image}', description:'${safeDesc}', classification:'${product.classification}'})"
+                        <button onclick="window.openPopularProductModal({id:'${product.id}', name:'${safeName}', price:${product.price}, image:'${product.image}', description:'${safeDesc}', classification:'${product.classification}'})"
                                 class="w-full bg-gray-200 text-gray-700 py-2.5 px-4 rounded-md hover:bg-gray-300 transition-colors duration-300 text-base">
                             Ver Más
                         </button>
@@ -280,10 +253,10 @@ document.addEventListener('DOMContentLoaded', () => {
             filterButton.textContent = category;
             filterButton.classList.add('px-4', 'py-2', 'm-1', 'rounded-md', 'transition-colors', 'duration-300', 'font-medium', 'hover-effect');
             if (category === 'Mostrar Todos') {
-                filterButton.classList.add('bg-yellow-500', 'text-white');
+                filterButton.classList.add('bg-[var(--color-accent)]', 'text-white');
                 filterButton.dataset.active = "true";
             } else {
-                filterButton.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-yellow-400', 'hover:text-white');
+                filterButton.classList.add('bg-gray-200', 'text-gray-700');
             }
             filterButton.addEventListener('click', () => {
                 handleFilterClick(category, filterButton);
@@ -296,12 +269,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update active state for buttons
         const buttons = categoryFiltersContainer.querySelectorAll('button');
         buttons.forEach(button => {
-            button.classList.remove('bg-yellow-500', 'text-white');
-            button.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-yellow-400', 'hover:text-white');
+            button.classList.remove('bg-[var(--color-accent)]', 'text-white');
+            button.classList.add('bg-gray-200', 'text-gray-700');
             button.dataset.active = "false";
         });
-        clickedButton.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-yellow-400');
-        clickedButton.classList.add('bg-yellow-500', 'text-white');
+        clickedButton.classList.remove('bg-gray-200', 'text-gray-700');
+        clickedButton.classList.add('bg-[var(--color-accent)]', 'text-white');
         clickedButton.dataset.active = "true";
 
         if (category === 'Mostrar Todos') {
@@ -367,13 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-// Pequeña función helper para formatear moneda
-if (typeof formatCurrency !== 'function') {
-    function formatCurrency(amount) {
-        return `$${parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
-    }
-}
 
 // Funciones para los botones de +/- en las tarjetas de producto
 function updateQuantity(productId, change) {

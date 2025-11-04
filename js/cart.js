@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addRemoveEventListeners() {
         if (!cartItemsContainer) return; // Asegurarse de que el contenedor existe
-        
+
         cartItemsContainer.addEventListener('click', (e) => {
             const button = e.target.closest('button');
             if (!button) return;
@@ -168,8 +168,3 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('coahuilaFireworksCart', JSON.stringify(updatedCart));
     };
 });
-
-// Helper para formatear moneda (global)
-function formatCurrency(amount) {
-    return `$${parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
-}

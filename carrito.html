@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Poppins', sans-serif; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--color-white); color: var(--color-primary); }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900 antialiased">
@@ -20,15 +20,15 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <a href="catalogo.html" class="text-2xl font-bold">
-                        <span class="text-yellow-500">Coahuila</span><span class="text-gray-800">Fireworks</span>
+                        <img src="img/logo.png" alt="Coahuila Fireworks" class="h-10">
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-5">
-                    <a href="catalogo.html" class="text-gray-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Tienda</a>
-                    <a href="contacto.html" class="text-gray-700 hover:text-yellow-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Contacto</a>
+                    <a href="catalogo.html" class="text-gray-700 hover:text-[var(--color-accent)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Tienda</a>
+                    <a href="contacto.html" class="text-gray-700 hover:text-[var(--color-accent)] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300">Contacto</a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" aria-label="Abrir menú" class="text-gray-700 hover:text-yellow-600 focus:outline-none">
+                    <button id="mobile-menu-button" aria-label="Abrir menú" class="text-gray-700 hover:text-[var(--color-accent)] focus:outline-none">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
@@ -36,32 +36,29 @@
                 </div>
             </div>
              <div id="mobile-menu" class="hidden md:hidden mt-1 pb-3 space-y-1">
-                <a href="catalogo.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-yellow-500 hover:text-white transition-colors duration-300">Tienda</a>
-                <a href="contacto.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-yellow-500 hover:text-white transition-colors duration-300">Contacto</a>
+                <a href="catalogo.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-[var(--color-accent)] hover:text-white transition-colors duration-300">Tienda</a>
+                <a href="contacto.html" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-[var(--color-accent)] hover:text-white transition-colors duration-300">Contacto</a>
             </div>
         </nav>
-        <div id="countdown-banner" class="countdown-banner-aesthetic">
-            Cargando...
-        </div>
     </header>
 
     <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 my-10">Resumen del Pedido</h1>
+        <h1 class="text-3xl sm:text-4xl font-bold text-center text-[var(--color-primary)] my-10">Resumen del Pedido</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-                <h2 class="text-2xl font-bold mb-4">Información de Entrega</h2>
+                <h2 class="text-2xl font-bold mb-4 text-[var(--color-primary)]">Información de Entrega</h2>
                 <form id="delivery-form" class="bg-white p-6 rounded-lg shadow-lg">
                     <div class="mb-4">
                         <label for="name" class="block text-sm font-medium text-gray-700">Nombre Completo</label>
-                        <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" required>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)]" required>
                     </div>
                     <div class="mb-4">
                         <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono</label>
-                        <input type="tel" id="phone" name="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" required>
+                        <input type="tel" id="phone" name="phone" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)]" required>
                     </div>
                     <div class="mb-4">
                         <label for="city" class="block text-sm font-medium text-gray-700">Ciudad de Entrega</label>
-                        <select id="city" name="city" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" required>
+                        <select id="city" name="city" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)]" required>
                             <option value="" disabled selected>Seleccione una ciudad</option>
                             <option value="Zacatecas">Zacatecas</option>
                             <option value="Guadalupe">Guadalupe</option>
@@ -69,7 +66,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="address" class="block text-sm font-medium text-gray-700">Dirección de Entrega</label>
-                        <textarea id="address" name="address" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500" required minlength="5"></textarea>
+                        <textarea id="address" name="address" rows="3" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[var(--color-accent)] focus:border-[var(--color-accent)]" required minlength="5"></textarea>
                     </div>
                 </form>
             </div>
@@ -87,15 +84,16 @@
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white py-10 mt-8">
+    <footer class="bg-[var(--color-primary)] text-white py-10 mt-8">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm text-gray-400">&copy; 2025 Coahuila Fireworks. Diseñado y desarrollado por <a href="https://epicsistems.com" target="_blank" class="underline hover:text-yellow-500 transition-colors duration-300">epicsistems.com</a></p>
+            <p class="text-sm text-gray-400">&copy; 2025 Coahuila Fireworks. Diseñado y desarrollado por <a href="https://epicsistems.com" target="_blank" class="underline hover:text-[var(--color-accent)] transition-colors duration-300">epicsistems.com</a></p>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/cart-page.js"></script>

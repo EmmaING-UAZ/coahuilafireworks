@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const productModal = document.getElementById('product-modal');
-    const closeModalButton = document.getElementById('close-modal-button');
+    const productModal = document.getElementById('product-modal-popular');
+    const closeModalButton = document.getElementById('close-modal-button-popular');
 
     // Elementos del modal que se actualizarán
-    const modalProductName = document.getElementById('modal-product-name');
-    const modalProductClassification = document.getElementById('modal-product-classification');
-    const modalProductImage = document.getElementById('modal-product-image');
-    const modalProductDescription = document.getElementById('modal-product-description');
-    const modalProductPrice = document.getElementById('modal-product-price');
-    const modalDecreaseQuantity = document.getElementById('modal-decrease-quantity');
-    const modalProductQuantity = document.getElementById('modal-product-quantity');
-    const modalIncreaseQuantity = document.getElementById('modal-increase-quantity');
-    const modalAddToCartButton = document.getElementById('modal-add-to-cart-button');
+    const modalProductName = document.getElementById('modal-product-name-popular');
+    const modalProductClassification = document.getElementById('modal-product-classification-popular');
+    const modalProductImage = document.getElementById('modal-product-image-popular');
+    const modalProductDescription = document.getElementById('modal-product-description-popular');
+    const modalProductPrice = document.getElementById('modal-product-price-popular');
+    const modalDecreaseQuantity = document.getElementById('modal-decrease-quantity-popular');
+    const modalProductQuantity = document.getElementById('modal-product-quantity-popular');
+    const modalIncreaseQuantity = document.getElementById('modal-increase-quantity-popular');
+    const modalAddToCartButton = document.getElementById('modal-add-to-cart-button-popular');
 
     let currentProduct = null;
     let currentQuantity = 1;
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         productModal.classList.remove('hidden');
         productModal.classList.add('flex'); // Asegura que sea visible y centrado
-        document.body.classList.add('modal-open'); 
+        document.body.classList.add('modal-open'); // Para evitar scroll del body si es necesario
     }
 
     function closeModal() {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (productModal) {
         productModal.addEventListener('click', (event) => {
-            if (event.target === productModal) { // Si el clic es en el fondo/overlay
+            if (event.target === productModal) {
                 closeModal();
             }
         });
@@ -63,8 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
-    // Lógica de cantidad en el modal
     if (modalDecreaseQuantity) {
         modalDecreaseQuantity.addEventListener('click', () => {
             if (currentQuantity > 1) {
@@ -93,13 +91,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Hacer la función openModal global
-    window.openProductModal = openModal;
+    window.openPopularProductModal = openModal;
 });
-
-// Helper para formatear moneda
-if (typeof formatCurrency !== 'function') {
-    function formatCurrency(amount) {
-        return `$${parseFloat(amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
-    }
-}

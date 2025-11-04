@@ -3,8 +3,11 @@
 
 /* Estilo para el color mostaza/dorado principal si se necesita globalmente */
 :root {
-    --color-primary: #DAA520; /* Un tono de dorado/mostaza, ajustar según el logo */
-    --color-primary-dark: #B8860B; /* Un tono más oscuro para hover/active */
+    --color-primary: #2A3E56;
+    --color-accent: #F39C12;
+    --color-secondary: #7BC6E2;
+    --color-white: #FFFFFF;
+    --color-primary-dark: #1e2e42;
 }
 
 /* Clases de utilidad personalizadas si fueran necesarias */
@@ -61,7 +64,7 @@ body.cart-panel-open, body.modal-open {
 /* Firefox scrollbar styling */
 html {
     scrollbar-width: thin; /* "auto" or "thin" */
-    scrollbar-color: var(--color-primary-dark, #B8860B) #f1f1f1; /* thumb and track color */
+    scrollbar-color: var(--color-accent, #F39C12) #f1f1f1; /* thumb and track color */
 }
 
 /* Para asegurar que el footer se quede abajo en páginas con poco contenido */
@@ -88,8 +91,8 @@ main {
 
 /* Efecto específico para botones principales (Reemplazo de @apply) */
 .btn-primary {
-    background-color: #f59e0b; /* bg-yellow-500 */
-    color: #ffffff; /* text-white */
+    background-color: var(--color-accent);
+    color: var(--color-white);
     font-weight: 600; /* font-semibold */
     padding: 0.75rem 2rem; /* py-3 px-8 */
     border-radius: 0.5rem; /* rounded-lg */
@@ -97,9 +100,9 @@ main {
     transition: all 0.3s ease-in-out;
 }
 .btn-primary:hover {
-    background-color: #d97706; /* bg-yellow-600 */
+    background-color: #d8890b;
     transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(218, 165, 32, 0.4);
+    box-shadow: 0 4px 10px rgba(243, 156, 18, 0.4);
 }
 
 /* Estilo para los filtros de categoría activos y hover (Reemplazo de @apply) */
@@ -113,9 +116,9 @@ main {
     cursor: pointer;
 }
 #category-filters button[data-active="true"] {
-    background-color: #f59e0b; /* bg-yellow-500 */
-    color: #ffffff; /* text-white */
-    border-color: #f59e0b; /* border-yellow-500 */
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
 }
 #category-filters button[data-active="false"] {
@@ -123,9 +126,9 @@ main {
     color: #374151; /* text-gray-700 */
 }
 #category-filters button[data-active="false"]:hover {
-    background-color: #fbbf24; /* hover:bg-yellow-400 */
-    color: #ffffff; /* hover:text-white */
-    border-color: #fbbf24; /* hover:border-yellow-400 */
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border-color: var(--color-secondary);
 }
 
 /* Asegurar que los iconos SVG dentro de botones/links hereden el color y la transición */
@@ -140,7 +143,7 @@ main {
 
 /* Contenedor principal de la tarjeta de resumen */
 .order-summary-card {
-    background-color: #ffffff;
+    background-color: var(--color-white);
     border-radius: 8px;
     padding: 24px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -152,7 +155,7 @@ main {
     font-size: 1.5rem; /* 24px */
     font-weight: 700;
     margin-bottom: 1rem; /* 16px */
-    color: #1f2937; /* gray-800 */
+    color: var(--color-primary);
 }
 
 /* Estructura de la tabla (usando CSS Grid) */
@@ -180,7 +183,8 @@ main {
     line-height: 1;
 }
 .quantity-change-btn:hover {
-    background-color: #e5e7eb; /* gray-200 */
+    background-color: var(--color-secondary);
+    color: var(--color-white);
 }
 .quantity-value {
     margin: 0 12px;
@@ -199,7 +203,7 @@ main {
 /* Cabecera de la tabla */
 .summary-table-header {
     font-weight: 600;
-    color: #4b5563; /* gray-600 */
+    color: var(--color-primary);
     font-size: 0.875rem; /* 14px */
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -239,7 +243,7 @@ main {
 
 .footer-item .footer-label {
     font-weight: 500;
-    color: #4b5563; /* gray-600 */
+    color: var(--color-primary);
 }
 
 .footer-item .footer-value {
@@ -256,7 +260,7 @@ main {
 }
 
 .footer-item.total-row .footer-value {
-    color: #ca8a04; /* yellow-600 */
+    color: var(--color-accent);
 }
 
 /* Contenedor de acciones (botón) */
@@ -267,8 +271,8 @@ main {
 
 /* Botón de generar PDF */
 .btn-generate-pdf {
-    background-color: #f59e0b; /* yellow-500 */
-    color: white;
+    background-color: var(--color-accent);
+    color: var(--color-white);
     padding: 12px 24px;
     border: none;
     border-radius: 6px;
@@ -279,9 +283,9 @@ main {
 }
 
 .btn-generate-pdf:hover {
-    background-color: #d97706; /* yellow-600 */
+    background-color: #d8890b;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+    box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
 }
 
 /* --- Media Query para Responsividad --- */
@@ -323,7 +327,7 @@ main {
     .table-cell::before {
         content: attr(data-label); /* Mostramos el label */
         font-weight: 600;
-        color: #4b5563; /* gray-600 */
+        color: var(--color-primary);
         margin-right: 16px;
     }
 
@@ -342,19 +346,6 @@ main {
     }
 }
 
-.countdown-banner-aesthetic {
-    background: linear-gradient(90deg, #8B0000, #FF4500);
-    color: white;
-    text-align: center;
-    padding: 0.75rem 1rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 1.1rem;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    box-shadow: 0 4px 15px rgba(255, 69, 0, 0.5);
-    text-shadow: 0 0 5px rgba(0,0,0,0.2);
-}
 
 .scroll-down-arrow {
     position: absolute;
