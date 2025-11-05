@@ -226,8 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // CAMBIO CRÍTICO: Limpiar el carrito correcto
             localStorage.removeItem('coahuilaFireworksCart');
 
-            // CAMBIO: Redirigir a index.html (la nueva tienda)
-            window.location.href = 'index.html';
+            // CAMBIO: Redirigir a catalogo.html (la nueva tienda)
+            window.location.href = 'catalogo.html';
         });
     }
 
